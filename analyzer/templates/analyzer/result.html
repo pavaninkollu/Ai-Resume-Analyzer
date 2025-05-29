@@ -1,0 +1,271 @@
+
+
+{% extends 'analyzer/base.html' %}
+{% load static %}
+{% block title %}ATS Results | ResumeRadar{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'analyzer/css/result.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="result-glass row g-4 p-4 shadow-lg w-100 mx-3 mx-md-5">
+    <!-- Your existing result.html content without <html>, <head>, <body> tags -->
+
+    <!-- Header -->
+    <div class="col-12" style="background-color: #f9f9f9; padding: 30px 20px; border-radius: 10px; margin-bottom: 30px;">
+      <div class="text-center">
+        <h2 class="text-primary fw-bold"><i class="fas fa-chart-line me-2"></i>Resume Analysis Results</h2>
+        <p class="text-muted mb-4">We analyzed your resume against the job description you provided.</p>
+      </div>
+      <div class="text-center">
+        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_tutvdkg0.json"
+                       background="transparent" speed="1"
+                       style="width: 150px; height: 150px; margin: auto;" loop autoplay></lottie-player>
+        <h3 class="text-primary fw-bold">ATS Score</h3>
+        <canvas id="atsScoreChart" width="100" height="100" style="margin: auto;"></canvas>
+        <h3 class="text-success fw-bold">ATS Score: {{ score }}%</h3>
+        <p class="mt-2 text-muted small">Based on keyword, section, and length matching.<br>
+        Based on semantic similarity and skill match with the job description.</p>
+      </div>
+    </div>
+
+    <!-- ATS Breakdown + Skills -->
+<!-- ATS Breakdown + Skills -->
+<div class="col-12" style="background-color: #f9f9f9; padding: 30px 20px; border-radius: 10px; margin-bottom: 30px;">
+  <div class="row g-4 mb-5">
+  <div class="col-md-6">
+    <!-- ATS Breakdown -->
+    <div class="p-4 rounded shadow-sm border bg-white d-flex align-items-center h-100">
+      <div style="width: 250px; height: 250px;">
+        <canvas id="atsBreakdownChart"></canvas>
+      </div>
+      <div class="ms-4">
+        <h5 class="text-primary mb-3">ATS Keywords Breakdown</h5>
+        <p><strong>Matched Keywords:</strong> {{ matched_keywords_count }}</p>
+        <p><strong>Unmatched Keywords:</strong> {{ unmatched_keywords_count }}</p>
+        <p><strong>Resume Word Count:</strong> {{ resume_word_count }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+<!-- Keywords Matching -->
+<div class="p-4 rounded shadow-sm border bg-white h-100">
+  <h5 class="text-primary mb-3"><i class="fas fa-tags me-2"></i>Keywords Matching</h5>
+
+  <div class="row">
+    <!-- Matched Skills -->
+    <div class="col-md-6 d-flex flex-column align-items-center">
+      <lottie-player
+        src="https://assets10.lottiefiles.com/packages/lf20_pqnfmone.json"
+        background="transparent"
+        speed="1"
+        style="width: 80px; height: 80px;"
+        loop
+        autoplay>
+      </lottie-player>
+      <h6 class="text-success mt-2">
+        <i class="fas fa-circle-check fa-sm text-success me-1"></i>Matched Skills
+      </h6>
+      {% if matched_skills %}
+        <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+          {% for skill in matched_skills %}
+            <span class="badge bg-success rounded-pill px-3 py-2">{{ skill }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-muted mt-2">No matched skills found.</p>
+      {% endif %}
+    </div>
+
+    <!-- Missing Skills -->
+    <div class="col-md-6 d-flex flex-column align-items-center">
+      <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_w51pcehl.json"
+               background="transparent" speed="1"
+               style="width: 80px; height: 80px;" loop autoplay></lottie-player>
+
+      <h6 class="text-danger mt-2">
+        <i class="fas fa-times-circle me-1"></i>Missing Skills
+      </h6>
+      {% if missing_skills %}
+        <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+          {% for skill in missing_skills %}
+            <span class="badge bg-danger rounded-pill px-3 py-2">{{ skill }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-muted mt-2">All JD skills matched 🎉</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+    <!-- Suggestions & Tips -->
+    <div class="col-12 mt-4">
+      <div class="p-4 rounded shadow-sm border bg-white">
+        <h5 class="text-primary mb-3"><i class="fas fa-lightbulb me-2 text-warning"></i>Suggestions & Tips to Improve Your Resume</h5>
+
+        <div class="row g-3">
+          {% if score < 70 %}
+          <div class="col-md-6">
+            <div class="tip-card">
+              <i class="fas fa-chart-line tip-icon text-danger"></i>
+              <div>
+                <h6 class="fw-bold">Improve Overall ATS Score</h6>
+                <p class="text-muted small mb-0">Your score is below 70%. Enhance keyword use, structure, and clarity.</p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if missing_skills %}
+          <div class="col-md-6">
+            <div class="tip-card">
+              <i class="fas fa-magnifying-glass-chart tip-icon text-info"></i>
+              <div>
+                <h6 class="fw-bold">Include Missing JD Keywords</h6>
+                <p class="text-muted small mb-0">Add these missing skills in your projects or experience to improve match.</p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if "education" not in resume_text|lower %}
+          <div class="col-md-6">
+            <div class="tip-card">
+              <i class="fas fa-user-graduate tip-icon text-secondary"></i>
+              <div>
+                <h6 class="fw-bold">Add an Education Section</h6>
+                <p class="text-muted small mb-0">We couldn’t find an “Education” section. Add one for better ATS readability.</p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="col-md-6">
+            <div class="tip-card">
+              <i class="fas fa-user-gear tip-icon text-success"></i>
+              <div>
+                <h6 class="fw-bold">Tailor Your Resume</h6>
+                <p class="text-muted small mb-0">Adjust resume content for each job by matching tools, frameworks, and results.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts and Wordclouds -->
+    <div class="col-12" style="background-color: #f9f9f9; padding: 30px 20px; border-radius: 10px; margin-bottom: 30px;">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="chart-card">
+            <h6 class="text-secondary mb-2"><i class="fas fa-chart-bar me-1"></i> Skill Match Chart</h6>
+            <img src="{{ chart_url }}" alt="Skill Match Chart" class="img-fluid rounded border shadow-sm">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="chart-card">
+            <h6 class="text-secondary mb-2"><i class="fas fa-cloud me-1"></i> Resume Word Cloud</h6>
+            <img src="{{ resume_wc_url }}" alt="Resume Word Cloud" class="img-fluid rounded border shadow-sm">
+          </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+          <div class="chart-card">
+            <h6 class="text-secondary mb-2"><i class="fas fa-cloud me-1"></i> JD Word Cloud</h6>
+            <img src="{{ jd_wc_url }}" alt="JD Word Cloud" class="img-fluid rounded border shadow-sm">
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="{% url 'upload_resume' %}" class="btn btn-outline-primary rounded-pill px-4 py-2">
+          <i class="fas fa-arrow-left me-1"></i> Analyze Another Resume
+        </a>
+        <a href="{% url 'download_report' score=score %}" class="btn btn-success" download>Download Report</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+   const atsScore = {{ score|default:0 }};
+  const ctxScore = document.getElementById('atsScoreChart').getContext('2d');
+
+  const centerText = {
+    id: 'centerText',
+    beforeDraw(chart) {
+      const { width, height } = chart;
+      const ctx = chart.ctx;
+      ctx.restore();
+      const fontSize = (height / 5).toFixed(2);
+      ctx.font = `${fontSize}px Segoe UI`;
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#00c9a7";
+
+      const text = atsScore + "%";
+      const textX = Math.round((width - ctx.measureText(text).width) / 2);
+      const textY = height / 2;
+
+      ctx.fillText(text, textX, textY);
+      ctx.save();
+    }
+  };
+
+  new Chart(ctxScore, {
+    type: 'doughnut',
+    data: {
+      datasets: [{
+        data: [atsScore, 100 - atsScore],
+        backgroundColor: ['#00c9a7', '#e9ecef'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      cutout: '70%',
+      plugins: {
+        tooltip: { enabled: false },
+        legend: { display: false }
+      }
+    },
+    plugins: [centerText]
+  });
+
+  const ctxBreakdown = document.getElementById('atsBreakdownChart').getContext('2d');
+
+  new Chart(ctxBreakdown, {
+    type: 'doughnut',
+    data: {
+      labels: ['Matched', 'Unmatched'],
+      datasets: [{
+        label: 'Keywords',
+        data: [{{ matched_keywords_count }}, {{ unmatched_keywords_count }}],
+        backgroundColor: ['#00c292', '#e46a76'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '65%',
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}

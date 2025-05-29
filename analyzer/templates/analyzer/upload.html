@@ -1,0 +1,41 @@
+{% extends 'analyzer/base.html' %}
+{% load static %}
+{% block title %}Upload Resume | ResumeRadar{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'analyzer/css/upload.css' %}">
+{% endblock %}
+{% block content %}
+<div class="upload-container container d-flex flex-column justify-content-center align-items-center min-vh-100">
+  <div class="upload-box p-5 rounded shadow-lg bg-white text-center w-100" style="max-width: 600px;">
+    <h1 class="mb-4 text-primary fw-bold">Upload Resume for ATS Analysis</h1>
+    <form action="{% url 'upload_resume' %}" method="post" enctype="multipart/form-data" class="mb-4">
+      {% csrf_token %}
+
+      <div class="mb-3 text-start">
+        <label for="name" class="form-label">Your Name:</label>
+        <input class="form-control" type="text" id="name" name="name" required>
+      </div>
+
+      <div class="mb-3 text-start">
+        <label for="resumeFile" class="form-label">Select your resume (PDF, DOCX):</label>
+        <input class="form-control" type="file" id="resumeFile" name="resume_file" accept=".pdf,.doc,.docx" required>
+      </div>
+
+      <div class="mb-3 text-start">
+        <label for="jdText" class="form-label">Paste Job Description:</label>
+        <textarea id="jdText" name="job_description" rows="6" class="form-control" placeholder="Paste job description text here..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Analyze Resume</button>
+    </form>
+
+    {% if messages %}
+      <div class="alert alert-info mt-3" role="alert">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

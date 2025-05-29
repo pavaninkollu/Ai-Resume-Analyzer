@@ -1,0 +1,128 @@
+/* .result-body {
+    background-color: #0b1d38;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+  }
+  
+  .result-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  }
+  
+  .result-section {
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+  }
+  
+  .keyword-pill {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .suggestions-list li {
+    background-color: #e3f2fd;
+    border-radius: 12px;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+   */
+  
+
+
+  body {
+  font-family: 'Inter', sans-serif;
+  }
+
+  h2, h3, h5, h6 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 8px;
+    color: #555;
+  }
+
+
+  canvas {
+    margin: auto;
+    display: block;
+  }
+  #atsScoreChart {
+    position: relative;
+  }
+  
+  #atsScoreChart .chartjs-render-monitor {
+    position: relative;
+  }
+  
+  .chartjs-tooltip {
+    display: none;
+  }
+  
+  .datalabel {
+  
+    left: -10%;  /* Adjust left position */
+    top: 50%;  /* Adjust top position */
+    transform: translate(-50%, -50%); /* Center the score */
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+  }
+  
+  canvas#atsBreakdownChart {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+  .section-match-box {
+  background: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+}
+
+.section-match-item h5 {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.progress-bar {
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 20px;
+}
+
+.tip-card {
+  display: flex;
+  gap: 15px;
+  background: #f8f9fa;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tip-icon {
+  font-size: 28px;
+  min-width: 30px;
+}

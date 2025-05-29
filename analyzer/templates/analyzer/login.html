@@ -1,0 +1,28 @@
+{% extends 'analyzer/base.html' %}
+{% load static %}
+
+{% block title %}Login | ResumeRadar{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px; border-radius: 20px;">
+    <div class="text-center mb-4">
+      <img src="{% static 'analyzer/images/logo.png' %}" alt="Logo" width="80">
+      <h4 class="mt-2 text-primary fw-bold">Welcome Back!</h4>
+      <p class="text-muted small">Log in to your ResumeRadar account</p>
+    </div>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="d-grid mt-3">
+        <button type="submit" class="btn btn-primary rounded-pill">Login</button>
+      </div>
+    </form>
+
+    <p class="text-center mt-3 mb-0 small">
+      Don't have an account? <a href="{% url 'register' %}" class="text-decoration-none text-primary">Register</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

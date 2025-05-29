@@ -1,0 +1,48 @@
+{% extends 'analyzer/base.html' %}
+{% load static %}
+
+{% block title %}Register | ResumeRadar{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-sm p-4" style="width: 100%; max-width: 450px; border-radius: 20px;">
+    <div class="text-center mb-4">
+      <img src="{% static 'analyzer/images/register.png' %}" alt="Logo" width="80">
+      <h4 class="mt-2 text-primary fw-bold">Create Your Account</h4>
+      <p class="text-muted small">Join ResumeRadar and start optimizing your resume</p>
+    </div>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="mb-3">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div>
+      <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+      <div class="mb-3">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+      </div>
+      <div class="mb-3">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+      </div>
+      <div class="d-grid mt-3">
+        <button type="submit" class="btn btn-success rounded-pill">Register</button>
+      </div>
+    </form>
+
+    <p class="text-center mt-3 mb-0 small">
+      Already have an account? <a href="{% url 'login' %}" class="text-decoration-none text-primary">Login</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
