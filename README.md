@@ -33,3 +33,42 @@ cd ai-resume-analyzer
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+Create a Virtual Environment & Activate it:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+Install Dependencies:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Set Up the Database:
+
+bash
+Copy
+Edit
+python manage.py migrate
+Run the Development Server:
+
+bash
+Copy
+Edit
+python manage.py runserver
+Open your browser and visit http://127.0.0.1:8000
+
+Usage
+Upload your resume and job description files.
+
+The app calculates a similarity score showing how well your resume matches the job description.
+
+View graphical charts that visualize skill matches.
+
+Receive AI-powered suggestions to improve your resume relevance.
+
+Contribution
+Pull requests are welcome! For major changes, please open an issue first to discuss.
+
+
