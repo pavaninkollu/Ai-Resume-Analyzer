@@ -68,6 +68,16 @@ View graphical charts that visualize skill matches.
 
 Receive AI-powered suggestions to improve your resume relevance.
 
+## Screenshots
+![Upload-Resume-ResumeReader](https://github.com/user-attachments/assets/0ea2a70e-14ad-481e-860c-5cda58b4bfff)
+![ATS-Results-ResumeReader](https://github.com/user-attachments/assets/3461bc29-9ecd-44ca-ad54-1a966332eb15)
+![Login-ResumeReader](https://github.com/user-attachments/assets/04eddba4-24fd-4b0b-b40a-abb79bf4731d)
+![Register-ResumeReader](https://github.com/user-attachments/assets/01a29d89-9d6b-4b43-beaa-8ec8accd22a1)
+
+![Homepage](screenshots/homepage.png)
+
+![Analysis Result](screenshots/analysis-result.png)
+
 Contribution
 Pull requests are welcome! For major changes, please open an issue first to discuss.
 
