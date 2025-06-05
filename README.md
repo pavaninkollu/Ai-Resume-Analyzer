@@ -70,4 +70,17 @@ Matched vs missing keywords
 
 Suggestions to improve your resume
 
+## Usage
+- Visit `http://127.0.0.1:8000/` in your browser.
+- Browse products, add them to the cart, and proceed to checkout.
+- Make payments securely using Razorpay.
+- Admin panel available at `/admin/` for managing orders and products.
+
+## Screenshots
+
+
+
+![E-commerce-Site (7)](https://github.com/user-attachments/assets/9dc50d50-b520-45a4-86f1-25bcc2b280cc)
+![E-commerce-Site (8)](https://github.com/user-attachments/assets/708704b8-149c-4f92-871a-572e5ba5092d)
+
 
