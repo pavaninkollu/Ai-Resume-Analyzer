@@ -55,7 +55,7 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
    http://127.0.0.1:8000/
 
 
-##🧪 Usage
+##
 -Upload your resume
 -Upload a job description
 -Click Analyze
@@ -64,11 +64,15 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
    -Matched vs missing keywords
    -Suggestions to improve your resume
 
-## Usage
+## 🧪 Usage
 - Visit `http://127.0.0.1:8000/` in your browser.
-- Browse products, add them to the cart, and proceed to checkout.
-- Make payments securely using Razorpay.
-- Admin panel available at `/admin/` for managing orders and products.
+- Upload your resume
+- Upload a job description
+- Click Analyze Button
+- See:
+- Match score (e.g. 72%)
+- atched vs missing keywords
+- Suggestions to improve your resume
 
 ## Screenshots
 
