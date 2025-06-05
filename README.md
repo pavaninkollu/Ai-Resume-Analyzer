@@ -76,6 +76,18 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
 ![Upload-Resume-ResumeReader](https://github.com/user-attachments/assets/86a111df-c29e-4e77-a47b-758e971a9a81)
 ![ATS-Results-ResumeReader](https://github.com/user-attachments/assets/6996f4aa-1f47-4a04-bb1a-6e0e76128603)
 
+## 🚀 Future Improvements
+
+- Add LinkedIn profile analysis
+- Include AI-based resume suggestions
+- Improve keyword matching using NLP techniques
+- Enable multiple job description comparisons
+- Add user authentication and profile saving
+- Integrate with job portals for real-time JD fetching
+- Support PDF export of analysis report
+- Add dark mode for better UX
+
+
 ## 📽️ Demo Video
 
 <video width="700" controls>
