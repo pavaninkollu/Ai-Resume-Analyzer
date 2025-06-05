@@ -53,3 +53,21 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
 6. **Visit**
    ```sh
    http://127.0.0.1:8000/
+
+
+🧪 Usage
+Upload your resume
+
+Upload a job description
+
+Click Analyze
+
+See:
+
+Match score (e.g. 72%)
+
+Matched vs missing keywords
+
+Suggestions to improve your resume
+
+
