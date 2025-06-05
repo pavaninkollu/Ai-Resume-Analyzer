@@ -32,19 +32,20 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
    ```sh
    git clone https://github.com/your-username/ai-resume-analyzer.git
    cd ai-resume-analyzer
-2. Create a Virtual Environment & Install Requirements
+2. **Create a Virtual Environment & Install Requirements**
+   ```sh
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    pip install -r requirements.txt
 
-3. Apply Migrations
+4. Apply Migrations
    python manage.py migrate
 
-4. Create Superuser (Optional)
+5. Create Superuser (Optional)
    python manage.py createsuperuser
 
-5. Run the Server
+6. Run the Server
    python manage.py runserver
 
-6. Visit
+7. Visit
    http://127.0.0.1:8000/
