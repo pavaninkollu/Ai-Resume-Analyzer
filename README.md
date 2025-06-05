@@ -69,9 +69,8 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
 
 ## Screenshots
 
-
-
-![E-commerce-Site (7)](https://github.com/user-attachments/assets/9dc50d50-b520-45a4-86f1-25bcc2b280cc)
-![E-commerce-Site (8)](https://github.com/user-attachments/assets/708704b8-149c-4f92-871a-572e5ba5092d)
-
+![Login-ResumeReader](https://github.com/user-attachments/assets/d29652da-745f-41da-9a46-bb7818b2320c)
+![Register-ResumeReader](https://github.com/user-attachments/assets/61c797a4-a6a6-45ed-bd3d-ae07c5b84e49)
+![Upload-Resume-ResumeReader](https://github.com/user-attachments/assets/86a111df-c29e-4e77-a47b-758e971a9a81)
+![ATS-Results-ResumeReader](https://github.com/user-attachments/assets/6996f4aa-1f47-4a04-bb1a-6e0e76128603)
 
