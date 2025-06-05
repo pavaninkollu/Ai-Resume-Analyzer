@@ -38,14 +38,18 @@ AI Resume Analyzer is a smart Django-based web app that helps users compare thei
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    pip install -r requirements.txt
 
-4. Apply Migrations
+3. **Apply Migrations**
+   ```sh
    python manage.py migrate
 
-5. Create Superuser (Optional)
+4. **Create Superuser (Optional)**
+   ```sh
    python manage.py createsuperuser
 
-6. Run the Server
+5. **Run the Server**
+   ```sh
    python manage.py runserver
 
-7. Visit
+6. **Visit**
+   ```sh
    http://127.0.0.1:8000/
